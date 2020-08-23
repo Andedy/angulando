@@ -1,3 +1,4 @@
+import { AuthService } from './services/auth.service';
 import { ResetPasswordPageComponent } from './pages/account/reset-password-page/reset-password-page.component';
 import { SignUpPageComponent } from './pages/account/sign-up-page/sign-up-page.component';
 import { PetsPageComponent } from './pages/store/pets-page/pets-page.component';
@@ -14,7 +15,7 @@ const routes: Routes = [
     component: FramePageComponent,
     children: [
       { path: '', component: ProductsPageComponent },
-      { path: 'cart', component: CartPageComponent },
+      { path: 'cart', component: CartPageComponent, canActivate: [AuthService] },
     ]
   },
   {
@@ -25,7 +26,6 @@ const routes: Routes = [
     ]
   },
   { path: 'login', component: LoginPageComponent },
-  { path: 'signup', component: SignUpPageComponent },
   { path: 'reset-password', component: ResetPasswordPageComponent },
 ];
 
