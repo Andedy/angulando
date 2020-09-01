@@ -1,3 +1,4 @@
+import { ProfilePageComponent } from './pages/account/profile-page/profile-page.component';
 import { AuthService } from './services/auth.service';
 import { ResetPasswordPageComponent } from './pages/account/reset-password-page/reset-password-page.component';
 import { SignUpPageComponent } from './pages/account/sign-up-page/sign-up-page.component';
@@ -21,7 +22,9 @@ const routes: Routes = [
   {
     path: 'account',
     component: FramePageComponent,
+    canActivate: [AuthService],
     children: [
+      { path: '', component: ProfilePageComponent },
       { path: 'pets', component: PetsPageComponent },
     ]
   },
