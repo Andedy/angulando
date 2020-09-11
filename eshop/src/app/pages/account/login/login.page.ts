@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoadingController, ToastController, NavController } from '@ionic/angular';
 import { DataService } from 'src/app/data.service';
+import { UserModel } from 'src/app/models/user.model';
+import { SecurityUtil } from 'src/app/utils/security.util';
 
 @Component({
   selector: 'app-login',
@@ -32,12 +34,47 @@ export class LoginPage implements OnInit {
     });
   }
 
+  async submit(){
+    if(this.form.invalid)
+      return;
+
+    const loading = await this.loadingCtrl.create({ message: 'Autenticando...' })
+    loading.present()
+
+    this.service.authenticate(this.form.value).subscribe(
+        (res: UserModel) => {
+          SecurityUtil.set(res);
+          loading.dismiss();
+          this.navCtrl.navigateRoot('/');
+        },
+        (err) => {
+          this.showError('Usuário ou senha inválidos');
+          loading.dismiss();
+        });
+  }
+
   ngOnInit() {
   }
+  
 
   toggleHide(){
     //esse carinha eu quero fazer parecido no painel
     this.hide = !this.hide;
+  }
+
+  async resetPassword() {
+    if (this.form.controls['username'].invalid) {
+      this.showError("Usuário inválido");
+      return;
+    }
+
+    const loading = await this.loadingCtrl.create({ message: 'Restaurando sua senha...' });
+    loading.present();
+  }
+
+   async showError(message) {
+    const error = await this.toastCtrl.create({ message: message, duration: 3000 });
+    error.present();
   }
 
 }
