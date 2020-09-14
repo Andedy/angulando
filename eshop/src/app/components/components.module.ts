@@ -1,3 +1,4 @@
+import { OrderListComponent } from './order-list/order-list.component';
 import { UserCardComponent } from './user-card/user-card.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MonthlySalesChartComponent } from './monthly-sales-chart/monthly-sales-chart.component';
@@ -13,7 +14,9 @@ import { CommonModule } from '@angular/common';
     LoadingComponent,
     MonthlySalesChartComponent,
     NavbarComponent,
-    UserCardComponent
+    UserCardComponent,
+    OrderListComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -23,7 +26,8 @@ import { CommonModule } from '@angular/common';
     LoadingComponent,
     MonthlySalesChartComponent,
     NavbarComponent,
-    UserCardComponent
+    UserCardComponent,
+    OrderListComponent
   ]
 })
 export class ComponentsModule { }
