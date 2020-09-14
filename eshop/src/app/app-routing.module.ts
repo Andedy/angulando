@@ -1,4 +1,4 @@
-import { ManagerGuard } from './guards/manager.guard';
+  
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthorizedGuard } from './guards/authorized.guard';
@@ -16,7 +16,7 @@ const routes: Routes = [
       { path: 'orders', loadChildren: './pages/store/orders/orders.module#OrdersPageModule' },
       { path: 'orders/:number', loadChildren: './pages/store/order-details/order-details.module#OrderDetailsPageModule' },
     ]
-  }
+  },
 ];
 
 @NgModule({

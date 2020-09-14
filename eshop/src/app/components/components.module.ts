@@ -1,3 +1,4 @@
+import { OrderStatusBadgeComponent } from './order-status-badge/order-status-badge.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { UserCardComponent } from './user-card/user-card.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -16,6 +17,7 @@ import { CommonModule } from '@angular/common';
     NavbarComponent,
     UserCardComponent,
     OrderListComponent,
+    OrderStatusBadgeComponent
     
   ],
   imports: [
@@ -27,7 +29,8 @@ import { CommonModule } from '@angular/common';
     MonthlySalesChartComponent,
     NavbarComponent,
     UserCardComponent,
-    OrderListComponent
+    OrderListComponent,
+    OrderStatusBadgeComponent
   ]
 })
 export class ComponentsModule { }
